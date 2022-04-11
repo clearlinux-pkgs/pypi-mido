@@ -4,7 +4,7 @@
 #
 Name     : pypi-mido
 Version  : 1.2.10
-Release  : 55
+Release  : 56
 URL      : https://files.pythonhosted.org/packages/57/1f/b067eed2314c13481e354dd32560c1d9f45d516dd44d9751b85e0e9798fc/mido-1.2.10.tar.gz
 Source0  : https://files.pythonhosted.org/packages/57/1f/b067eed2314c13481e354dd32560c1d9f45d516dd44d9751b85e0e9798fc/mido-1.2.10.tar.gz
 Summary  : MIDI Objects for Python
@@ -15,14 +15,11 @@ Requires: pypi-mido-license = %{version}-%{release}
 Requires: pypi-mido-python = %{version}-%{release}
 Requires: pypi-mido-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
-Provides: mido
-Provides: mido-python
-Provides: mido-python3
-BuildRequires : pypi(pluggy)
-BuildRequires : py-python
-BuildRequires : pytest
-BuildRequires : tox
-BuildRequires : pypi(virtualenv)
+BuildRequires : pypi(py)
+BuildRequires : pypi-pluggy
+BuildRequires : pypi-pytest
+BuildRequires : pypi-tox
+BuildRequires : pypi-virtualenv
 
 %description
 ==============================
@@ -72,7 +69,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641455539
+export SOURCE_DATE_EPOCH=1649696998
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
