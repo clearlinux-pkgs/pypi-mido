@@ -4,7 +4,7 @@
 #
 Name     : pypi-mido
 Version  : 1.2.10
-Release  : 65
+Release  : 66
 URL      : https://files.pythonhosted.org/packages/57/1f/b067eed2314c13481e354dd32560c1d9f45d516dd44d9751b85e0e9798fc/mido-1.2.10.tar.gz
 Source0  : https://files.pythonhosted.org/packages/57/1f/b067eed2314c13481e354dd32560c1d9f45d516dd44d9751b85e0e9798fc/mido-1.2.10.tar.gz
 Summary  : MIDI Objects for Python
@@ -20,6 +20,9 @@ BuildRequires : pypi-pluggy
 BuildRequires : pypi-pytest
 BuildRequires : pypi-tox
 BuildRequires : pypi-virtualenv
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 ==============================
@@ -72,12 +75,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656394173
+export SOURCE_DATE_EPOCH=1672289704
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$FFLAGS -fno-lto "
-export FFLAGS="$FFLAGS -fno-lto "
-export CXXFLAGS="$CXXFLAGS -fno-lto "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -94,8 +97,8 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-mido
-cp %{_builddir}/mido-1.2.10/LICENSE %{buildroot}/usr/share/package-licenses/pypi-mido/d891cc509267ee382f3cf7389f1c6f6304954ec7
-cp %{_builddir}/mido-1.2.10/docs/license.rst %{buildroot}/usr/share/package-licenses/pypi-mido/f243d53f50ec9a04ef1bdf42262d8e9c6481e5ee
+cp %{_builddir}/mido-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-mido/d891cc509267ee382f3cf7389f1c6f6304954ec7 || :
+cp %{_builddir}/mido-%{version}/docs/license.rst %{buildroot}/usr/share/package-licenses/pypi-mido/f243d53f50ec9a04ef1bdf42262d8e9c6481e5ee || :
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
