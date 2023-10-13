@@ -5,7 +5,7 @@
 #
 Name     : pypi-mido
 Version  : 1.3.0
-Release  : 68
+Release  : 69
 URL      : https://files.pythonhosted.org/packages/a1/33/4184e8b5aada02e9ca74ee7fdce462b023f278cabe9dd9f58a4a62c230a3/mido-1.3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/a1/33/4184e8b5aada02e9ca74ee7fdce462b023f278cabe9dd9f58a4a62c230a3/mido-1.3.0.tar.gz
 Summary  : MIDI Objects for Python
